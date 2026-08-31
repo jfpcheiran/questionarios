@@ -2,10 +2,300 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Primeiro Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionários de UX em RV Imersiva</title>
+    <style>
+        /* Variáveis de cores para facilitar o ajuste e garantir contraste (Acessibilidade) */
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #333333;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+            --card-bg: #ffffff;
+            --link-color: #0056b3;
+            --border-color: #dddddd;
+            --tag-bg: #e0e0e0;
+            --tag-active-bg: #0056b3;
+            --tag-active-text: #ffffff;
+        }
+
+        /* Estilos Globais */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover, a:focus {
+            text-decoration: underline;
+        }
+
+        /* Estrutura de Layout */
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Filtros */
+        .filter-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--tag-bg);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-btn[aria-pressed="true"] {
+            background-color: var(--tag-active-bg);
+            color: var(--tag-active-text);
+        }
+
+        /* Cartões de Questionários */
+        .questionnaire-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .questionnaire-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .questionnaire-card.hidden {
+            display: none;
+        }
+
+        .tag-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag-list li {
+            background-color: var(--tag-bg);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Lista de Detalhes (Semântica acessível para pares chave-valor) */
+        dl {
+            display: grid;
+            grid-template-columns: max-content auto;
+            gap: 10px 20px;
+            margin-bottom: 15px;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        dd {
+            margin: 0;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 600px) {
+            dl {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            dt {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Olá, mundo!</h1>
-    <p>Meu site está no ar pelo GitHub Pages.</p>
+
+    <header>
+        <h1>Experiência de Usuário em Realidade Virtual Imersiva</h1>
+        <p>Catálogo de Escalas e Questionários Padronizados</p>
+    </header>
+
+    <main>
+        <section id="informacoes" aria-labelledby="info-heading">
+            <h2 id="info-heading">Tutorial do SVR - Symposium on Virtual and Augmented Reality 2026</h2>
+			<p><strong>Título:</strong> Beyond the Survey: The Dos and Don'ts of Standardized Questionnaires for Assessing Immersive VR Experiences</p>
+            <p><strong>Autores:</strong> Jean Cheiran, Luciana Nedel, Anderson Maciel, Carla Freitas, Vinicius de Souza</p>
+            <p><strong>Descrição:</strong> As immersive Virtual Reality (VR) expands, accurately measuring User Experience (UX) is critical. While standardized questionnaires offer a reliable alternative to ad hoc surveys, they are frequently misused through inappropriate item modification, poor contextual fit, or unsystematic translations. This tutorial guides evaluators in selecting and administering standardized UX instruments for immersive VR through a comprehensive set of methodological "dos and don'ts" covering conceptual alignment, administration protocols, and structural integrity. Furthermore, it addresses challenges of specific cultural and language contexts. By identifying common pitfalls and providing recommendations, this tutorial empowers the VR community to adopt more reliable measurement strategies, securing the accuracy of empirical research and fostering the development of novel psychometric tools for different contexts of immersive experiences.</p>
+        </section>
+
+        <section id="questionarios" aria-labelledby="quest-heading">
+            <h2 id="quest-heading">Escalas e Questionários Padronizados</h2>
+            
+            <div id="filter-container" class="filter-container" role="group" aria-label="Filtrar questionários por categoria">
+                </div>
+
+            <div id="questionnaire-list" class="questionnaire-list" role="list">
+                </div>
+        </section>
+    </main>
+
+    <script>
+        // Dados em formato JSON com os questionários e suas tags
+        const questionnairesData = [
+            {
+                "id": "sus",
+                "title": "System Usability Scale (SUS)",
+                "tags": ["Usabilidade", "Português"],
+                "construct": "Usabilidade",
+                "dimensions": "Usabilidade, Facilidade de aprendizagem",
+                "itemsCount": "10 itens (Escala Likert de 5 pontos)",
+                "language": "Inglês, Português",
+                "articles": [
+                    { "title": "Brooke, J. SUS - A quick and dirty usability scale.", "url": "https://doi.org/10.1201/9781498710411-35" },
+                    { "title": "Brooke, J. SUS: a retrospective", "url": "https://dl.acm.org/doi/10.5555/2817912.2817913" },
+					{ "title": "Martins, A. I. et al. European Portuguese validation of the System Usability Scale (SUS).", "url": "https://doi.org/10.1016/j.procs.2015.09.273" }
+                ]
+            },
+            {
+                "id": "ssq",
+                "title": "Simulator Sickness Questionnaire (SSQ)",
+                "tags": ["Cybersickness", "Português"],
+                "construct": "Simulator sickness (mal-estar)",
+                "dimensions": "Sintomas oculomotores, desorientação, náusea",
+                "itemsCount": "16 itens (4 pontos)",
+                "language": "Inglês, Português",
+                "articles": [
+                    { "title": "Kennedy, R. S. et al. Simulator Sickness Questionnaire: An Enhanced Method for Quantifying Simulator Sickness.", "url": "https://doi.org/10.1207/s15327108ijap0303_3" },
+					{ "title": "Carvalho, M. R. et al. Simulator Sickness Questionnaire: tradução e adaptação transcultural.", "url": "https://doi.org/10.1590/S0047-20852011000400003" }
+                ]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterContainer = document.getElementById('filter-container');
+            const questionnaireList = document.getElementById('questionnaire-list');
+
+            // 1. Extrai todas as tags únicas presentes nos questionários
+            const allTags = new Set();
+            questionnairesData.forEach(item => {
+                item.tags.forEach(tag => allTags.add(tag));
+            });
+
+            // 2. Cria os botões de filtro (Botão "Todos" + Botões de cada Tag)
+            const tagsArray = ['Todos', ...Array.from(allTags)];
+            
+            tagsArray.forEach((tag, index) => {
+                const btn = document.createElement('button');
+                btn.classList.add('filter-btn');
+                btn.setAttribute('data-filter', tag);
+                btn.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+                btn.textContent = tag;
+                filterContainer.appendChild(btn);
+            });
+
+            // 3. Renderiza os cartões dos questionários a partir do JSON
+            questionnairesData.forEach(item => {
+                const article = document.createElement('article');
+                article.classList.add('questionnaire-card');
+                article.setAttribute('data-tags', JSON.stringify(item.tags));
+                article.setAttribute('role', 'listitem');
+
+                const tagListHTML = item.tags
+                    .map(tag => `<li>${tag}</li>`)
+                    .join('');
+
+                const articlesHTML = item.articles
+                    .map(art => `<a href="${art.url}" target="_blank" rel="noopener noreferrer">${art.title}</a>`)
+                    .join('<br>');
+
+                article.innerHTML = `
+                    <h3>${item.title}</h3>
+                    <ul class="tag-list" aria-label="Tags do questionário">
+                        ${tagListHTML}
+                    </ul>
+                    <dl>
+                        <dt>Construto Principal:</dt>
+                        <dd>${item.construct}</dd>
+                        
+                        <dt>Dimensões Internas:</dt>
+                        <dd>${item.dimensions}</dd>
+                        
+                        <dt>Quantidade de Itens:</dt>
+                        <dd>${item.itemsCount}</dd>
+                        
+                        <dt>Idioma:</dt>
+                        <dd>${item.language}</dd>
+                        
+                        <dt>Artigos Relacionados:</dt>
+                        <dd>${articlesHTML}</dd>
+                    </dl>
+                `;
+
+                questionnaireList.appendChild(article);
+            });
+
+            // 4. Lógica de Filtragem e Atualização de Acessibilidade (ARIA)
+            const filterButtons = filterContainer.querySelectorAll('.filter-btn');
+            const questionnaireCards = questionnaireList.querySelectorAll('.questionnaire-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filterValue = button.getAttribute('data-filter');
+
+                    // Atualiza aria-pressed dos botões
+                    filterButtons.forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+                    button.setAttribute('aria-pressed', 'true');
+
+                    // Aplica a visibilidade nos cartões
+                    questionnaireCards.forEach(card => {
+                        const cardTags = JSON.parse(card.getAttribute('data-tags'));
+                        
+                        if (filterValue === 'Todos' || cardTags.includes(filterValue)) {
+                            card.classList.remove('hidden');
+                            card.removeAttribute('aria-hidden');
+                        } else {
+                            card.classList.add('hidden');
+                            card.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
