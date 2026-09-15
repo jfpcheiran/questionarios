@@ -356,7 +356,7 @@
                         if (activeFilters.length === 0) {
                             card.classList.remove('hidden');
                         } else {
-                            const hasMatch = cardTags.some(tag => activeFilters.includes(tag));
+                            const hasMatch = activeFilters.every(filter => cardTags.includes(filter));
                             if (hasMatch) {
                                 card.classList.remove('hidden');
                             } else {
