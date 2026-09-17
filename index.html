@@ -239,6 +239,32 @@
         // Dados em formato JSON com os questionários e suas tags
         const questionnairesData = [
             {
+                "id": "xueq",
+                "title": "Extended User Experience Questionnaire (X-UEQ)",
+                "tags": ["Experiência de Usuário", "Realidade Virtual"],
+                "construct": "Experiência de Usuário em XR (módulo extra para o UEQ-S)",
+                "dimensions": "Agência, engajamento sensorial, realismo percebido, exploração ativa, autoavaliação de desempenho, qualidade da interface",
+                "itemsCount": "12 itens (Diferencial semântico de 7 pontos)",
+                "language": "Inglês",
+                "articles": [
+					{ "title": "Miraglia, C. et al. Towards X-UEQ: User-driven development of Experience Questionnaire.", "url": "https://doi.org/10.1109/ISPA66905.2025.11259449" }
+                ]
+            },
+			{
+                "id": "pq",
+                "title": "Presence Questionnaire (PQ) - Witmer & Singer",
+                "tags": ["Presença", "Português", "Realidade Virtual"],
+                "construct": "Presença",
+                "dimensions": "Envolvimento, fidelidade sensorial, adaptação/imersão, qualidade da interface (mas há outros modelos)",
+                "itemsCount": "29 itens (Escala categórica de 7 pontos) (depende da versão)",
+                "language": "Inglês, Português",
+                "articles": [
+                    { "title": "Witmer, B., Singer, M. Measuring Presence in Virtual Environments: A Presence Questionnaire.", "url": "https://doi.org/10.1162/105474698565686" },
+                    { "title": "Witmer, B. et al. The Factor Structure of the Presence Questionnaire.", "url": "https://doi.org/10.1162/105474605323384654" },
+					{ "title": "Silva, G. et al. A questionnaire for measuring presence in virtual environments: factor analysis of the presence questionnaire and adaptation into Brazilian Portuguese.", "url": "https://doi.org/10.1007/s10055-016-0295-7" }
+                ]
+            },
+			{
                 "id": "pssuq",
                 "title": "Post-Study Usability Questionnaire (PSSUQ)",
                 "tags": ["Usabilidade"],
@@ -261,21 +287,63 @@
                 "language": "Inglês, Português",
                 "articles": [
                     { "title": "Brooke, J. SUS - A quick and dirty usability scale.", "url": "https://doi.org/10.1201/9781498710411-35" },
-                    { "title": "Brooke, J. SUS: a retrospective", "url": "https://dl.acm.org/doi/10.5555/2817912.2817913" },
-					{ "title": "Martins, A. I. et al. European Portuguese validation of the System Usability Scale (SUS).", "url": "https://doi.org/10.1016/j.procs.2015.09.273" }
+                    { "title": "Brooke, J. SUS: a retrospective.", "url": "https://dl.acm.org/doi/10.5555/2817912.2817913" },
+					{ "title": "Martins, A. et al. European Portuguese validation of the System Usability Scale (SUS).", "url": "https://doi.org/10.1016/j.procs.2015.09.273" },
+					{ "title": "Lourenço, D. et al. Translation and cross-cultural adaptation of the System Usability Scale to Brazilian Portuguese.", "url": "https://doi.org/10.5294/aqui.2022.22.2.8" }
+                ]
+            },
+			{
+                "id": "sus-p",
+                "title": "Slater-Usoh-Steed Presence Questionnaire (SUS-P)",
+                "tags": ["Presença", "Realidade Virtual"],
+                "construct": "Presença",
+                "dimensions": "unidimensional",
+                "itemsCount": "6 itens (Escala categórica de 7 pontos)",
+                "language": "Inglês",
+                "articles": [
+                    { "title": "Slater, M. et al. Depth of Presence in Virtual Environments.", "url": "https://doi.org/10.1162/pres.1994.3.2.130" },
+                    { "title": "Usoh, M. Using presence questionnaires in reality.", "url": "https://dl.acm.org/doi/10.1162/105474600566989" }
                 ]
             },
             {
                 "id": "ssq",
                 "title": "Simulator Sickness Questionnaire (SSQ)",
-                "tags": ["Cybersickness", "Português"],
+                "tags": ["Cybersickness", "Português", "Realidade Virtual"],
                 "construct": "Simulator sickness (mal-estar)",
                 "dimensions": "Sintomas oculomotores, desorientação, náusea",
-                "itemsCount": "16 itens (4 pontos)",
+                "itemsCount": "16 itens (Escala categórica de 4 pontos)",
                 "language": "Inglês, Português",
                 "articles": [
                     { "title": "Kennedy, R. S. et al. Simulator Sickness Questionnaire: An Enhanced Method for Quantifying Simulator Sickness.", "url": "https://doi.org/10.1207/s15327108ijap0303_3" },
 					{ "title": "Carvalho, M. R. et al. Simulator Sickness Questionnaire: tradução e adaptação transcultural.", "url": "https://doi.org/10.1590/S0047-20852011000400003" }
+                ]
+            },
+            {
+                "id": "ueq",
+                "title": "User Experience Questionnaire (UEQ)",
+                "tags": ["Experiência de Usuário", "Português"],
+                "construct": "Experiência de Usuário",
+                "dimensions": "Atratividade, clareza, eficiência, controle, estímulo, inovação",
+                "itemsCount": "26 itens (Diferencial semântico de 7 pontos)",
+                "language": "Inglês, Português",
+                "articles": [
+                    { "title": "Site do User Experiencie Questionnaire.", "url": "https://www.ueq-online.org/" },
+					{ "title": "Laugwitz, B. et al. Construction and evaluation of a user experience questionnaire.", "url": "https://doi.org/10.1007/978-3-540-89350-9_6" },
+					{ "title": "Schrepp, M. et al. Construction of a benchmark for the User Experience Questionnaire (UEQ).", "url": "https://doi.org/10.9781/ijimai.2017.445" },
+					{ "title": "Schrepp, M. et al. Adaption of user experience questionnaires for different user groups.", "url": "https://doi.org/10.1007/s10209-016-0485-9" }
+                ]
+            },
+			{
+                "id": "ueq+",
+                "title": "User Experience Questionnaire Plus (UEQ+)",
+                "tags": ["Experiência de Usuário"],
+                "construct": "Experiência de Usuário",
+                "dimensions": "vários módulos disponíveis para diferentes dimensões",
+                "itemsCount": "a quantidade de itens (Diferencial semântico de 7 pontos) depende da quantidade de módulos usados",
+                "language": "Inglês",
+                "articles": [
+                    { "title": "Site do User Experiencie Questionnaire Plus.", "url": "https://ueqplus.ueq-research.org/" },
+					{ "title": "Schrepp, M. et al. Design and Validation of a Framework for the Creation of User Experience Questionnaires.", "url": "https://doi.org/10.9781/ijimai.2019.06.006" }
                 ]
             }
         ];
