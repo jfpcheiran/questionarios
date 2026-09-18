@@ -238,7 +238,19 @@
     <script>
         // Dados em formato JSON com os questionários e suas tags
         const questionnairesData = [
-            {
+			{
+                "id": "csq-vr",
+                "title": "Cybersickness in Virtual Reality Questionnaire (CSQ-VR)",
+                "tags": ["Cybersickness", "Realidade Virtual"],
+                "construct": "VR sickness (mal-estar)",
+                "dimensions": "Sintomas vestibulares, oculomotores, nausea",
+                "itemsCount": "6 itens (Escala Likert de 7 pontos)",
+                "language": "Inglês",
+                "articles": [
+                    { "title": "Kourtesis, P. et al. Cybersickness in Virtual Reality Questionnaire (CSQ-VR): A Validation and Comparison against SSQ and VRSQ.", "url": "https://doi.org/10.3390/virtualworlds2010002" }
+                ]
+            },
+			{
                 "id": "xueq",
                 "title": "Extended User Experience Questionnaire (X-UEQ)",
                 "tags": ["Experiência de Usuário", "Realidade Virtual"],
@@ -315,7 +327,9 @@
                 "language": "Inglês, Português",
                 "articles": [
                     { "title": "Kennedy, R. S. et al. Simulator Sickness Questionnaire: An Enhanced Method for Quantifying Simulator Sickness.", "url": "https://doi.org/10.1207/s15327108ijap0303_3" },
-					{ "title": "Carvalho, M. R. et al. Simulator Sickness Questionnaire: tradução e adaptação transcultural.", "url": "https://doi.org/10.1590/S0047-20852011000400003" }
+					{ "title": "Bouchard, S. et al. Arguing in Favor of Revising the Simulator Sickness Questionnaire Factor Structure When Assessing Side Effects Induced by Immersions in Virtual Reality.", "url": "https://doi.org/10.3389/fpsyt.2021.739742" },
+					{ "title": "Carvalho, M. R. et al. Simulator Sickness Questionnaire: tradução e adaptação transcultural.", "url": "https://doi.org/10.1590/S0047-20852011000400003" },
+					{ "title": "Gonçalves, G. et al. Adaptation and Validation of the Simulator Sickness Questionnaire to Portuguese (SSQp) Based on Immersive Virtual Reality Exposure.", "url": "https://doi.org/10.1109/ACCESS.2024.3419589" }
                 ]
             },
             {
@@ -349,13 +363,26 @@
 			{
                 "id": "umux-lite",
                 "title": "Usability Metric of User Experience - Lite (UMUX-Lite)",
-                "tags": ["Experiência de Usuário"],
+                "tags": ["Experiência de Usuário", "Usabilidade"],
                 "construct": "Experiência de Usuário, mas apenas a parte pragmática/instrumental",
                 "dimensions": "Unidimensional",
                 "itemsCount": "2 itens (Escala Likert de 7 pontos)",
                 "language": "Inglês",
                 "articles": [
-                    { "title": "Lewis, J. et al. UMUX-LITE: when there's no time for the SUS.", "url": "https://doi.org/10.1145/2470654.2481287" }
+                    { "title": "Lewis, J. et al. UMUX-LITE: when there's no time for the SUS.", "url": "https://doi.org/10.1145/2470654.2481287" },
+					{ "title": "Sauro, J., Lewis, J. Quantifying the User Experience", "url": "https://www.sciencedirect.com/book/monograph/9780123849687/quantifying-the-user-experience" }
+                ]
+            },
+			{
+                "id": "vrsq",
+                "title": "Virtual Reality Sickness Questionnaire (VRSQ)",
+                "tags": ["Cybersickness", "Realidade Virtual"],
+                "construct": "VR sickness (mal-estar)",
+                "dimensions": "Sintomas oculomotores, desorientação",
+                "itemsCount": "9 itens (Escala categórica de 4 pontos)",
+                "language": "Inglês",
+                "articles": [
+                    { "title": "Kim, H. et al. Virtual reality sickness questionnaire (VRSQ): Motion sickness measurement index in a virtual reality environment.", "url": "https://doi.org/10.1016/j.apergo.2017.12.016" }
                 ]
             }
         ];
